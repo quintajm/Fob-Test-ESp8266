@@ -10,7 +10,7 @@ def sendHit(a):
     c.ping()
     c.disconnect()
 
-def sendFail():
+def sendFail(a):
     server = '10.0.0.211'
     c = MQTTClient("umqtt_client", server)
     c.connect()
