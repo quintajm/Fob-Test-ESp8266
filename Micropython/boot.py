@@ -24,10 +24,10 @@ print('Connection successful')
 
 #This part goes to github https://github.com/quintajm/SenkoTest and syncronizes with the repo on boot
 OTA = senko.Senko(user = "quintajm",
-                  repo="SenkoTest",
+                  repo="Fob-Test-ESp8266",
                   branch="main",
-                  working_dir="umqtt",
-                  files = ["test.txt"]
+                  working_dir="Micropython",
+                  files = ["boot.py","main.py","servo_control.py"]
                   )
 print("Syncronization configured")
 
