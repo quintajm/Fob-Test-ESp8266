@@ -35,12 +35,12 @@ i = 0
 timeout =time.time() + 60*1440#5 minute timeout
 while True:
     servo_control.forward()
-    time.sleep(1)
+    time.sleep(2)
     led.value(0)
     i += 1
     print("Test cycle:{}".format(i))
-    time.sleep(1)
     servo_control.backwards()
+    time.sleep(2)
     led.value(1)
     if i == 4610 or time.time() > timeout:
         break
