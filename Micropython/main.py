@@ -1,7 +1,7 @@
 import time
 from umqtt.simple import MQTTClient
 from machine import Pin, Timer
-
+import servo_control
 def sendHit(a):
     server = '10.0.0.211'
     c = MQTTClient("umqtt_client", server)
@@ -32,15 +32,17 @@ pir.irq(trigger=Pin.IRQ_RISING, handler=sendHit) #The handler passes on the pin 
 #Testing cycle
 led = Pin(2, Pin.OUT) #Gpio that controls onboard LED
 i = 0
-timeout =time.time() + 60*5 #5 minute timeout
+timeout =time.time() + 60*1440#5 minute timeout
 while True:
-    time.sleep(2)
+    servo_control.forward()
+    time.sleep(1)
     led.value(0)
     i += 1
     print("Test cycle:{}".format(i))
-    time.sleep(2)
+    time.sleep(1)
+    servo_control.backwards()
     led.value(1)
-    if i == 1000 or time.time() > timeout:
+    if i == 4610 or time.time() > timeout:
         break
 
 sendFail()
